@@ -1,0 +1,16 @@
+{
+  "code": "sales_amount",
+  "name": "销售额",
+  "unit": "CNY",
+  "sources": [
+    {
+      "id": "inv",
+      "doctype": "Sales Invoice",
+      "filters": [["docstatus", "=", 1]],
+      "date_field": "posting_date",
+      "value_field": "base_grand_total",
+      "op": "sum"
+    }
+  ],
+  "formula": {"op": "sum", "args": ["inv"]}
+}

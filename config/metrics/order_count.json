@@ -1,0 +1,15 @@
+{
+  "code": "order_count",
+  "name": "订单数",
+  "unit": "笔",
+  "sources": [
+    {
+      "id": "so",
+      "doctype": "Sales Order",
+      "filters": [["docstatus", "=", 1]],
+      "date_field": "transaction_date",
+      "op": "count"
+    }
+  ],
+  "formula": {"op": "sum", "args": ["so"]}
+}

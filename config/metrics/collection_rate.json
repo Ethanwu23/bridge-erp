@@ -1,0 +1,24 @@
+{
+  "code": "collection_rate",
+  "name": "回款率",
+  "unit": "%",
+  "sources": [
+    {
+      "id": "pay",
+      "doctype": "Payment Entry",
+      "filters": [["docstatus", "=", 1], ["payment_type", "=", "Receive"]],
+      "date_field": "posting_date",
+      "value_field": "base_paid_amount",
+      "op": "sum"
+    },
+    {
+      "id": "inv",
+      "doctype": "Sales Invoice",
+      "filters": [["docstatus", "=", 1]],
+      "date_field": "posting_date",
+      "value_field": "base_grand_total",
+      "op": "sum"
+    }
+  ],
+  "formula": {"op": "divide", "args": ["pay", "inv"]}
+}

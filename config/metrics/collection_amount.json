@@ -1,0 +1,16 @@
+{
+  "code": "collection_amount",
+  "name": "回款额",
+  "unit": "CNY",
+  "sources": [
+    {
+      "id": "pe",
+      "doctype": "Payment Entry",
+      "filters": [["docstatus", "=", 1], ["payment_type", "=", "Receive"]],
+      "date_field": "posting_date",
+      "value_field": "base_paid_amount",
+      "op": "sum"
+    }
+  ],
+  "formula": {"op": "sum", "args": ["pe"]}
+}

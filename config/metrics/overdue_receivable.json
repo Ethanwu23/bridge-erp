@@ -1,0 +1,16 @@
+{
+  "code": "overdue_receivable",
+  "name": "逾期应收",
+  "unit": "CNY",
+  "sources": [
+    {
+      "id": "inv",
+      "doctype": "Sales Invoice",
+      "filters": [["docstatus", "=", 1], ["base_outstanding_amount", ">", 0]],
+      "as_of_field": "due_date",
+      "value_field": "base_outstanding_amount",
+      "op": "sum"
+    }
+  ],
+  "formula": {"op": "sum", "args": ["inv"]}
+}
