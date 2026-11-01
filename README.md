@@ -62,6 +62,7 @@ python scripts/d1_check.py --mode http \
 | [架构](docs/ARCH-v0.3.md) | 分层、流程、接口、ADR |
 | [开发计划](docs/PLAN-v0.3.md) | 16 个任务、23 人日、需求追溯 |
 | [开工检查](docs/READY-v0.1.md) | 三个阻塞项的闭环方案与种子数据 |
+| [Windows 环境](docs/SETUP-WINDOWS.md) | 新机器克隆、装 Docker、起 ERPNext、跑通 D1 |
 
 ## 已知偏差
 
