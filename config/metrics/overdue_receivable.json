@@ -6,11 +6,28 @@
     {
       "id": "inv",
       "doctype": "Sales Invoice",
-      "filters": [["docstatus", "=", 1], ["base_outstanding_amount", ">", 0]],
+      "filters": [
+        [
+          "docstatus",
+          "=",
+          1
+        ],
+        [
+          "base_outstanding_amount",
+          ">",
+          0
+        ]
+      ],
       "as_of_field": "due_date",
       "value_field": "base_outstanding_amount",
       "op": "sum"
     }
   ],
-  "formula": {"op": "sum", "args": ["inv"]}
+  "formula": {
+    "op": "sum",
+    "args": [
+      "inv"
+    ]
+  },
+  "description": "已过到期日且未收完的应收余额合计"
 }

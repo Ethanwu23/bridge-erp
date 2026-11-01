@@ -50,6 +50,23 @@ python tests\test_http_and_paging.py
 
 预期：D1 为 **3 项 PASS、3 项 SKIP**，两个测试脚本输出 `all tests passed`。这一步不通过就先别装 Docker。
 
+## 3.5 安装依赖并启动 API
+
+```powershell
+python -m pip install -r requirements.txt
+uvicorn --app-dir services/api bridge.app:app --port 8000 --reload
+```
+
+另开一个终端验证：
+
+```powershell
+curl.exe -s -X POST http://127.0.0.1:8000/api/v1/query -H "Content-Type: application/json" -d '{"question":"10月回款率是多少"}'
+```
+
+应返回 `collection_rate` 与 `0.5818...`。
+
+> 若公司网络装不了依赖，可用零依赖 demo：`python scripts\serve_demo.py --port 8000`，接口一致。
+
 ## 4. 启动 ERPNext
 
 ```powershell

@@ -6,11 +6,28 @@
     {
       "id": "pe",
       "doctype": "Payment Entry",
-      "filters": [["docstatus", "=", 1], ["payment_type", "=", "Receive"]],
+      "filters": [
+        [
+          "docstatus",
+          "=",
+          1
+        ],
+        [
+          "payment_type",
+          "=",
+          "Receive"
+        ]
+      ],
       "date_field": "posting_date",
       "value_field": "base_paid_amount",
       "op": "sum"
     }
   ],
-  "formula": {"op": "sum", "args": ["pe"]}
+  "formula": {
+    "op": "sum",
+    "args": [
+      "pe"
+    ]
+  },
+  "description": "期间内已提交收款单的实收金额"
 }

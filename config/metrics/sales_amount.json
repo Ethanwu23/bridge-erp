@@ -6,11 +6,23 @@
     {
       "id": "inv",
       "doctype": "Sales Invoice",
-      "filters": [["docstatus", "=", 1]],
+      "filters": [
+        [
+          "docstatus",
+          "=",
+          1
+        ]
+      ],
       "date_field": "posting_date",
       "value_field": "base_grand_total",
       "op": "sum"
     }
   ],
-  "formula": {"op": "sum", "args": ["inv"]}
+  "formula": {
+    "op": "sum",
+    "args": [
+      "inv"
+    ]
+  },
+  "description": "期间内已提交销售发票的含税合计，退货按负数计入"
 }

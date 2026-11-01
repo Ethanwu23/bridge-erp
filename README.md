@@ -30,15 +30,38 @@ ops/erpnext/             本地 ERPNext 环境与灌数步骤
 ## 快速开始
 
 ```bash
-# 不依赖 ERP：跑指标引擎与 D1 检查
+# 不依赖 ERP：跑指标引擎、解析器、服务层与 D1 检查
 python scripts/d1_check.py --mode mock
+python scripts/run_eval.py          # 50 条评测集，规则解析准确率
 python tests/test_metrics.py
+python tests/test_parser.py
+python tests/test_service.py
 python tests/test_http_and_paging.py
+
+# 启动 API（二选一）
+pip install -r requirements.txt
+uvicorn --app-dir services/api bridge.app:app --port 8000
+# 或零依赖 demo 服务（无 pip 环境）
+python scripts/serve_demo.py --port 8000
 
 # 有 ERPNext 时（见 ops/erpnext/README.md）
 python scripts/d1_check.py --mode http \
   --base-url http://localhost:8080 \
   --key <api_key> --secret <api_secret>
+```
+
+## API
+
+| 端点 | 方法 | 说明 |
+|---|---|---|
+| `/health` | GET | 健康检查，返回当前模式与指标数 |
+| `/api/v1/metrics` | GET | 指标清单 |
+| `/api/v1/query` | POST | `{"question": "10月回款率是多少"}` → 数值 + 口径 + 明细计数 |
+
+```bash
+curl -s -X POST http://127.0.0.1:8000/api/v1/query \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"10月回款率是多少"}'
 ```
 
 ## D1 状态（2026-11-01）

@@ -6,10 +6,22 @@
     {
       "id": "so",
       "doctype": "Sales Order",
-      "filters": [["docstatus", "=", 1]],
+      "filters": [
+        [
+          "docstatus",
+          "=",
+          1
+        ]
+      ],
       "date_field": "transaction_date",
       "op": "count"
     }
   ],
-  "formula": {"op": "sum", "args": ["so"]}
+  "formula": {
+    "op": "sum",
+    "args": [
+      "so"
+    ]
+  },
+  "description": "期间内已提交销售订单的笔数"
 }
